@@ -1,0 +1,23 @@
+// vite.config.js
+import { defineConfig } from "file:///sessions/youthful-wonderful-mayer/mnt/aws-health/node_modules/vite/dist/node/index.js";
+import react from "file:///sessions/youthful-wonderful-mayer/mnt/aws-health/node_modules/@vitejs/plugin-react/dist/index.js";
+var vite_config_default = defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      // Im Dev-Modus reicht Vite /api/health direkt an AWS weiter,
+      // damit `npm run dev` ohne separaten Backend-Start funktioniert.
+      // In Produktion uebernimmt das der Node-Server (server.js).
+      "/api/health": {
+        target: "https://status.aws.amazon.com",
+        changeOrigin: true,
+        secure: true,
+        rewrite: () => "/data.json"
+      }
+    }
+  }
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCIvc2Vzc2lvbnMveW91dGhmdWwtd29uZGVyZnVsLW1heWVyL21udC9hd3MtaGVhbHRoXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCIvc2Vzc2lvbnMveW91dGhmdWwtd29uZGVyZnVsLW1heWVyL21udC9hd3MtaGVhbHRoL3ZpdGUuY29uZmlnLmpzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9zZXNzaW9ucy95b3V0aGZ1bC13b25kZXJmdWwtbWF5ZXIvbW50L2F3cy1oZWFsdGgvdml0ZS5jb25maWcuanNcIjtpbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tIFwidml0ZVwiO1xuaW1wb3J0IHJlYWN0IGZyb20gXCJAdml0ZWpzL3BsdWdpbi1yZWFjdFwiO1xuXG4vLyBEZXYtUHJveHk6IGRhbWl0IGBucG0gcnVuIGRldmAgbG9rYWwga2VpbiBDT1JTLVByb2JsZW0gaGF0LCB3aXJkIC9hd3MtaGVhbHRoXG4vLyB0cmFuc3BhcmVudCBhbiBkZW4gQVdTLUhlYWx0aC1FbmRwdW5rdCB3ZWl0ZXJnZXJlaWNodCAoZ2VuYXUgd2llIG5naW54IGltIENvbnRhaW5lcikuXG5leHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoe1xuICBwbHVnaW5zOiBbcmVhY3QoKV0sXG4gIHNlcnZlcjoge1xuICAgIHByb3h5OiB7XG4gICAgICAvLyBJbSBEZXYtTW9kdXMgcmVpY2h0IFZpdGUgL2FwaS9oZWFsdGggZGlyZWt0IGFuIEFXUyB3ZWl0ZXIsXG4gICAgICAvLyBkYW1pdCBgbnBtIHJ1biBkZXZgIG9obmUgc2VwYXJhdGVuIEJhY2tlbmQtU3RhcnQgZnVua3Rpb25pZXJ0LlxuICAgICAgLy8gSW4gUHJvZHVrdGlvbiB1ZWJlcm5pbW10IGRhcyBkZXIgTm9kZS1TZXJ2ZXIgKHNlcnZlci5qcykuXG4gICAgICBcIi9hcGkvaGVhbHRoXCI6IHtcbiAgICAgICAgdGFyZ2V0OiBcImh0dHBzOi8vc3RhdHVzLmF3cy5hbWF6b24uY29tXCIsXG4gICAgICAgIGNoYW5nZU9yaWdpbjogdHJ1ZSxcbiAgICAgICAgc2VjdXJlOiB0cnVlLFxuICAgICAgICByZXdyaXRlOiAoKSA9PiBcIi9kYXRhLmpzb25cIixcbiAgICAgIH0sXG4gICAgfSxcbiAgfSxcbn0pO1xuIl0sCiAgIm1hcHBpbmdzIjogIjtBQUFxVSxTQUFTLG9CQUFvQjtBQUNsVyxPQUFPLFdBQVc7QUFJbEIsSUFBTyxzQkFBUSxhQUFhO0FBQUEsRUFDMUIsU0FBUyxDQUFDLE1BQU0sQ0FBQztBQUFBLEVBQ2pCLFFBQVE7QUFBQSxJQUNOLE9BQU87QUFBQTtBQUFBO0FBQUE7QUFBQSxNQUlMLGVBQWU7QUFBQSxRQUNiLFFBQVE7QUFBQSxRQUNSLGNBQWM7QUFBQSxRQUNkLFFBQVE7QUFBQSxRQUNSLFNBQVMsTUFBTTtBQUFBLE1BQ2pCO0FBQUEsSUFDRjtBQUFBLEVBQ0Y7QUFDRixDQUFDOyIsCiAgIm5hbWVzIjogW10KfQo=

@@ -1,0 +1,13 @@
+services:
+  aws-health-map:
+    build: .
+    image: aws-health-map:latest
+    container_name: aws-health-map
+    ports:
+      - "8080:8080"
+    environment:
+      # Optional anpassbar:
+      # - AWS_HEALTH_URL=https://status.aws.amazon.com/data.json
+      # - CACHE_TTL_MS=30000
+      - PORT=8080
+    restart: unless-stopped
